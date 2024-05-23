@@ -54,7 +54,7 @@ form.addEventListener('submit', event => {
         const row = document.createElement('tr');
         row.innerHTML = `
                     <td>${item.description}</td>
-                    <td>$${item.amount}</td>
+                    <td>₹${item.amount}</td>
                 `;
         invoiceItemsContainer.appendChild(row);
     });
