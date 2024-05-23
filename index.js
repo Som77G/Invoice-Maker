@@ -76,7 +76,7 @@ async function downloadPDF() {
     const { jsPDF } = window.jspdf;
     const invoice = document.getElementById('invoice');
     const canvas = await html2canvas(invoice, { scale: 3}); // Increase scale for better quality
-    const imgData = canvas.toDataURL('image/png');
+    const imgData = canvas.toDataURL('image/jpeg');
 
     const pdf = new jsPDF('p', 'mm', 'a4');
     const imgProps = pdf.getImageProperties(imgData);
@@ -87,7 +87,7 @@ async function downloadPDF() {
     let heightLeft = pdfHeight;
     let position = 0;
 
-    pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, pdfHeight);
+    pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, pdfHeight, "", "FAST");
     heightLeft -= pageHeight;
 
     while (heightLeft > 0) {
