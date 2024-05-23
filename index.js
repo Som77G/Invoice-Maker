@@ -78,7 +78,7 @@ async function downloadPDF() {
     const canvas = await html2canvas(invoice, { scale: 3}); // Increase scale for better quality
     const imgData = canvas.toDataURL('image/jpeg');
 
-    const pdf = new jsPDF('p', 'mm', 'a4');
+    const pdf = new jsPDF('p', 'px', 'a4');
     const imgProps = pdf.getImageProperties(imgData);
     const pdfWidth = pdf.internal.pageSize.getWidth();
     const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
