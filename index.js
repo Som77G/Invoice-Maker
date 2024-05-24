@@ -107,7 +107,12 @@ async function downloadPDF() {
     const invoice = document.getElementById('invoice');
 
     // Create a new jsPDF instance
-    const pdf = new jsPDF('p', 'mm', 'a4');
+    const pdf = new jsPDF({
+        orientation: 'p',
+        unit: 'mm',
+        format: 'a4',
+        compress: true // Enable compression
+    });
 
     // Use the html method to directly convert HTML content to PDF
     pdf.html(invoice, {
