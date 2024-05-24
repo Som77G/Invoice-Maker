@@ -9,8 +9,6 @@ body {
     justify-content: center;
 }
 .download-button{
-    /* display: flex;
-    justify-content: flex-end; */
     text-align: right;
     padding:20px;
 }
@@ -21,7 +19,7 @@ body {
     
 }
 .invoice-container {
-    padding : 60px 80px 40px 80px;
+    padding : 50px;
 }
 
 .header {
@@ -29,6 +27,10 @@ body {
 }
 
 .header h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    font-weight: 500; 
+    font-size: 60px; 
+    letter-spacing: 0.2cm;
     margin: 0px;
 }
 .header span {
@@ -43,18 +45,18 @@ body {
     margin-bottom: 12px;
     display:grid;
     grid-template-columns: 1fr 3fr;
-    font-size:large;
+    font-size:larger;
 }
 
 .table {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 30px;
     border-collapse: collapse;
 }
 
 .table th, .table td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 12px;
     text-align: left;
 }
 
@@ -76,7 +78,7 @@ body {
     margin-top: 20px;
 }
 .footer p {
-    color: rgb(0, 0, 0, 0.5);
+    color: rgb(92, 86, 86);
 }
 .align-signature {
     display:grid;
@@ -86,7 +88,6 @@ body {
 form {
     width: 60%;
     padding: 10px;
-    /* border : 2px solid rgb(146, 139, 139); */
     border: 1px solid #ddd;
 }
 

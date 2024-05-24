@@ -54,7 +54,7 @@ form.addEventListener('submit', event => {
         const row = document.createElement('tr');
         row.innerHTML = `
                     <td>${item.description}</td>
-                    <td>₹${item.amount}</td>
+                    <td>${item.amount} Rs.</td>
                 `;
         invoiceItemsContainer.appendChild(row);
     });
@@ -72,31 +72,52 @@ form.addEventListener('submit', event => {
     }
 });
 
+// async function downloadPDF() {
+//     const { jsPDF } = window.jspdf;
+//     const invoice = document.getElementById('invoice');
+//     const canvas = await html2canvas(invoice, { scale: 3}); // Increase scale for better quality
+//     const imgData = canvas.toDataURL('image/jpeg');
+
+//     const pdf = new jsPDF('p', 'mm', 'a4');
+//     const imgProps = pdf.getImageProperties(imgData);
+//     const pdfWidth = pdf.internal.pageSize.getWidth();
+//     const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+//     const pageHeight = pdf.internal.pageSize.getHeight();
+
+//     let heightLeft = pdfHeight;
+//     let position = 0;
+
+//     pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, pdfHeight, "", "FAST");
+//     heightLeft -= pageHeight;
+
+//     while (heightLeft > 0) {
+//         position = heightLeft - pdfHeight;
+//         pdf.addPage();
+//         pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, pdfHeight);
+//         heightLeft -= pageHeight;
+//     }
+
+//     pdf.save('invoice.pdf');
+// }
+
 async function downloadPDF() {
     const { jsPDF } = window.jspdf;
+
+    // Get the content of the invoice
     const invoice = document.getElementById('invoice');
-    const canvas = await html2canvas(invoice, { scale: 3}); // Increase scale for better quality
-    const imgData = canvas.toDataURL('image/jpeg');
 
-    const pdf = new jsPDF('p', 'px', 'a4');
-    const imgProps = pdf.getImageProperties(imgData);
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-    const pageHeight = pdf.internal.pageSize.getHeight();
+    // Create a new jsPDF instance
+    const pdf = new jsPDF('p', 'mm', 'a4');
 
-    let heightLeft = pdfHeight;
-    let position = 0;
-
-    pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, pdfHeight, "", "FAST");
-    heightLeft -= pageHeight;
-
-    while (heightLeft > 0) {
-        position = heightLeft - pdfHeight;
-        pdf.addPage();
-        pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, pdfHeight);
-        heightLeft -= pageHeight;
-    }
-
-    pdf.save('invoice.pdf');
+    // Use the html method to directly convert HTML content to PDF
+    pdf.html(invoice, {
+        callback: function (pdf) {
+            pdf.save('invoice.pdf');
+        },
+        x: 10,
+        y: 6,
+        width: 190, // Adjust width as needed
+        windowWidth: 800, // Adjust window width to fit your content
+    });
 }
 
