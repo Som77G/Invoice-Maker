@@ -2,16 +2,29 @@ const form = document.getElementById('invoice-form');
 const itemContainer = document.getElementById('item-container');
 const signatureImage = document.getElementById('signature');
 
+const removeItem = (event) => {
+    const parent = event.target.parentNode
+    parent.remove()
+}
+
 document.getElementById('add-item-button').addEventListener('click', () => {
     const itemDiv = document.createElement('div');
     itemDiv.innerHTML = `
                 <label>Description:</label>
                 <input type="text" class="description-input" required>
                 <label>Amount:</label>
-                <input type = "number" class = "amount-input" requird>
+                <input type = "number" class = "amount-input" required>
+                <button
+                    class="delete-item"
+                    type="button"
+                    onclick="removeItem(event)"
+                >Delete Item</button>
+                <br><br>
             `;
+    
     itemContainer.appendChild(itemDiv);
 });
+
 
 form.addEventListener('submit', event => {
     event.preventDefault();
@@ -24,6 +37,7 @@ form.addEventListener('submit', event => {
     const bank = document.getElementById('bank-input').value;
     const accountName = document.getElementById('account-name-input').value;
     const accountNumber = document.getElementById('account-number-input').value;
+    const ifsCode = document.getElementById('ifs-code-input').value;
 
     const items = [];
     const descriptions = document.getElementsByClassName('description-input');
@@ -47,6 +61,7 @@ form.addEventListener('submit', event => {
     document.getElementById('bank').innerText = bank;
     document.getElementById('account-name').innerText = accountName;
     document.getElementById('account-number').innerText = accountNumber;
+    document.getElementById('ifs-code').innerText = ifsCode;
 
     const invoiceItemsContainer = document.getElementById('invoice-items');
     invoiceItemsContainer.innerHTML = ''; // Clear any existing items

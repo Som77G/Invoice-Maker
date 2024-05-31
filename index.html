@@ -43,9 +43,13 @@
             <label for="account-number-input">Account Number:</label>
             <input type="text" id="account-number-input" required><br>
 
+            <label for="ifs-code-input">IFSC:</label>
+            <input type="text" id="ifs-code-input" required>
+            <br><br>
+
             <h2>Enter Item Details</h2>
             <div id="item-container"></div>
-            <br>
+            
             <button type="button" id="add-item-button">Add Item</button><br><br>
 
             <label for="signature-input">Signature:</label>
@@ -54,6 +58,7 @@
                 preview of Invoice</p>
             <button type="submit">Generate Invoice's Preview</button>
         </form>
+        
 
         <div class="invoice-box">
             <div class="invoice-container" id="invoice">
@@ -64,7 +69,7 @@
                 </div>
                 <br><br>
                 <div class="invoice-info">
-                    <div><strong style = "letter-spacing: 0.1cm;">BILLED TO:</strong> <span id="billed-to">Social Sense NX Pt Ltd</span></div>
+                    <div><strong style = "letter-spacing: 0.1cm;">BILLED TO:</strong> <span id="billed-to">Social Sense NX Pte Limited</span></div>
                     <div><strong style = "letter-spacing: 0.1cm;">PAY TO:</strong> <span id="pay-to"></span></div>
                     <div><strong></strong><span id="address"></span></div>
                     <div><strong></strong><span id="phone"></span></div>
@@ -73,6 +78,7 @@
                     <div>Bank: <span id="bank"></span></div>
                     <div>Account Name: <span id="account-name"></span></div>
                     <div >Account Number: <span id="account-number"></span></div>
+                    <div >IFSC: <span id="ifs-code"></span></div>
                 </div>
                 <br><br>
                 <table class="table">
@@ -91,7 +97,7 @@
                     <div><strong>TOTAL</strong></div>
                     <div><strong><span id="total" ></span> Rs.</strong></div>
                 </div>
-                <br><br><br>
+                <br><br>
                 <div class="footer">
                     <p>Payment is required within 14 business days of invoice date. Please send remittance to
                         hello@email.com.</p>
